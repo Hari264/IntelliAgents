@@ -1,0 +1,26 @@
+code,category,description,clause_ref,customer_script_id,next_action
+CL-101,waiting_period,Illness within initial 1-month waiting period,4.1,SCR-WAIT-01,Explain initial waiting period and eligible date
+CL-104,documents,Required documents not submitted,6.2,SCR-DOC-01,Request missing documents and share checklist
+CL-108,timeliness,Claim notified after the allowed notification time,6.1,SCR-LATE-01,Request reason for delay and escalate for condonation review
+CL-112,timeliness,Reimbursement documents submitted after 30 days of discharge,6.2,SCR-LATE-01,Request reason for delay and escalate for condonation review
+CL-120,medical_necessity,Hospitalisation not medically necessary,2.1,SCR-GEN-01,Share medical opinion summary and grievance route
+CL-125,medical_necessity,Treatment could be taken on an outpatient basis,2.1,SCR-GEN-01,Explain in-patient requirement and OPD rider option
+CL-130,coverage,Pre or post hospitalisation expenses outside allowed days,2.2,SCR-GEN-01,Explain 30 and 60 day windows
+CL-140,coverage,Procedure not in day care list,2.3,SCR-GEN-01,Explain day care list and in-patient criteria
+CL-201,waiting_period,Treatment within specific disease waiting period,4.2,SCR-WAIT-01,Explain specific waiting period and eligible date
+CL-205,waiting_period,Joint replacement within waiting period,4.2,SCR-WAIT-01,Explain joint replacement waiting period and check waiver rider
+CL-217,waiting_period,Treatment for pre-existing disease within PED waiting period,4.3,SCR-PED-01,Explain PED waiting period and advise eligible date
+CL-220,disclosure,Pre-existing disease not disclosed at proposal,4.3,SCR-PED-01,Refer to underwriting for non-disclosure review
+CL-301,limits,Sum insured exhausted,3.1,SCR-SUBLIM-01,Share utilisation statement
+CL-305,limits,Room rent exceeds eligible limit,8.1,SCR-ROOM-01,Explain room rent limit and apply proportionate deduction
+CL-306,limits,Proportionate deduction applied to associated expenses,8.2,SCR-ROOM-01,Share deduction calculation
+CL-310,limits,Procedure sub-limit exceeded,3.2,SCR-SUBLIM-01,Explain sub-limit and payable amount
+CL-401,exclusion,Permanent exclusion applies,5.1,SCR-EXCL-01,Cite exclusion clause and grievance route
+CL-405,exclusion,Cosmetic treatment excluded,5.4,SCR-EXCL-01,Cite exclusion clause and grievance route
+CL-410,exclusion,Experimental or unproven treatment,5.3,SCR-EXCL-01,Cite exclusion clause and grievance route
+CL-415,coverage,Maternity not covered or within maternity waiting period,2.6,SCR-EXCL-01,Explain maternity terms of applicable version
+CL-420,exclusion,Self-inflicted injury or substance abuse,5.2,SCR-EXCL-01,Cite exclusion clause and grievance route
+CL-501,cashless,Cashless not available at non-network hospital,7.1,SCR-GEN-01,Advise reimbursement route
+CL-505,policy_status,Policy not in force on date of loss,9.1,SCR-GEN-01,Explain grace period and renewal
+CL-510,portability,Continuity of prior cover not established,9.2,SCR-WAIT-01,Request prior policy documents
+CL-601,review,Claim under additional review,6.1,SCR-GEN-01,Inform customer claim is under review without giving reasons

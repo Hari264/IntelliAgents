@@ -1,0 +1,8 @@
+openai>=1.40
+azure-search-documents>=11.6
+azure-identity
+python-dotenv
+pandas
+pyyaml
+python-dateutil
+streamlit

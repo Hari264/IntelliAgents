@@ -1,0 +1,4 @@
+persona,display_name,allowed_audience,max_sensitivity
+service,Service Agent,service,Internal
+adjuster,Claims Adjuster,adjuster|fraud,Restricted
+underwriter,Underwriter,underwriter,Internal

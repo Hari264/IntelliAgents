@@ -1,0 +1,11 @@
+claim_id,product,policy_start,date_of_loss,diagnosis,condition_category,claimed_amount,sum_insured,room_rent_per_day,demo_scenario
+CLM-001,HEALTH_GOLD,2023-06-01,2024-09-15,Right knee total arthroplasty,joint_replacement,350000,500000,4000,knee_v2024
+CLM-002,HEALTH_GOLD,2024-03-01,2025-09-15,Left knee total arthroplasty,joint_replacement,350000,500000,8000,knee_v2025
+CLM-003,HEALTH_GOLD,2023-04-01,2025-08-10,Type 2 diabetes complications,pre_existing_disease,120000,500000,6000,cl217
+CLM-004,HEALTH_GOLD,2022-01-01,2025-05-05,Pneumonia,initial_waiting,180000,500000,15000,room_rent
+CLM-005,HEALTH_GOLD,2021-01-01,2024-07-01,Normal delivery,maternity,60000,500000,4000,maternity_v2024
+CLM-006,HEALTH_GOLD,2023-01-01,2025-06-01,Normal delivery,maternity,60000,500000,8000,maternity_v2025
+CLM-007,HEALTH_GOLD,2024-02-01,2025-10-01,Cataract right eye,cataract,55000,300000,0,cataract
+CLM-008,HEALTH_GOLD,2025-06-01,2025-07-20,Cardiac bypass surgery,initial_waiting,620000,1000000,20000,fraud_threshold
+CLM-009,HEALTH_SILVER,2025-02-01,2025-09-01,Right hip arthroplasty,joint_replacement,280000,500000,5000,silver_decoy
+CLM-010,HEALTH_GOLD,2025-04-01,2025-04-20,Dengue fever,initial_waiting,45000,300000,3000,initial_waiting

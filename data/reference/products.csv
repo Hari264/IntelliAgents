@@ -1,0 +1,4 @@
+product,version,effective_from,effective_to,wording_doc_id,room_rent_pct_of_si
+HEALTH_GOLD,v2024,2024-01-01,2024-12-31,HG-WORD-2024,1
+HEALTH_GOLD,v2025,2025-01-01,9999-12-31,HG-WORD-2025,2
+HEALTH_SILVER,v2025,2025-01-01,9999-12-31,HS-WORD-2025,1

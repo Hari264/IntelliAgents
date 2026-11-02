@@ -1,0 +1,11 @@
+product,version,item,limit_inr,basis,clause_ref
+HEALTH_GOLD,v2024,cataract,40000,per_eye,3.2
+HEALTH_GOLD,v2024,joint_replacement,300000,per_joint,3.2
+HEALTH_GOLD,v2024,road_ambulance,2000,per_hospitalisation,2.5
+HEALTH_GOLD,v2025,cataract,40000,per_eye,3.2
+HEALTH_GOLD,v2025,joint_replacement,300000,per_joint,3.2
+HEALTH_GOLD,v2025,road_ambulance,2000,per_hospitalisation,2.5
+HEALTH_GOLD,v2025,maternity,50000,per_delivery,2.6
+HEALTH_SILVER,v2025,cataract,25000,per_eye,3.2
+HEALTH_SILVER,v2025,joint_replacement,150000,per_joint,3.2
+HEALTH_SILVER,v2025,road_ambulance,2000,per_hospitalisation,2.5
