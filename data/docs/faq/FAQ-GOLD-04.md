@@ -1,6 +1,6 @@
 ---
 doc_id: FAQ-GOLD-04
-title: Health Gold FAQ: Renewal and Portability
+title: "Health Gold FAQ: Renewal and Portability"
 product: HEALTH_GOLD
 version: na
 effective_from: 2024-01-01

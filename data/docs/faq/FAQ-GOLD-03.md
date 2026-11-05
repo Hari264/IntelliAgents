@@ -1,6 +1,6 @@
 ---
 doc_id: FAQ-GOLD-03
-title: Health Gold FAQ: Cashless Network Hospitals
+title: "Health Gold FAQ: Cashless Network Hospitals"
 product: HEALTH_GOLD
 version: na
 effective_from: 2024-01-01

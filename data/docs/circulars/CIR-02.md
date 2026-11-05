@@ -1,6 +1,6 @@
 ---
 doc_id: CIR-02
-title: NIR Circular Summary: Communication of Claim Rejection
+title: "NIR Circular Summary: Communication of Claim Rejection"
 product: HEALTH_GOLD
 version: na
 effective_from: 2024-01-01

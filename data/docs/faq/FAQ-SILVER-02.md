@@ -1,6 +1,6 @@
 ---
 doc_id: FAQ-SILVER-02
-title: Health Silver FAQ: Waiting Periods
+title: "Health Silver FAQ: Waiting Periods"
 product: HEALTH_SILVER
 version: na
 effective_from: 2025-01-01

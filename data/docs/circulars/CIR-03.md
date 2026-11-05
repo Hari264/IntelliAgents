@@ -1,6 +1,6 @@
 ---
 doc_id: CIR-03
-title: NIR Circular Summary: Grievance Redressal and Disclosure Standards
+title: "NIR Circular Summary: Grievance Redressal and Disclosure Standards"
 product: HEALTH_GOLD
 version: na
 effective_from: 2024-01-01

@@ -1,6 +1,6 @@
 ---
 doc_id: FAQ-GOLD-01
-title: Health Gold FAQ: Coverage Basics
+title: "Health Gold FAQ: Coverage Basics"
 product: HEALTH_GOLD
 version: na
 effective_from: 2024-01-01

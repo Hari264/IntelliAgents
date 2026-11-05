@@ -1,6 +1,6 @@
 ---
 doc_id: FAQ-GOLD-02
-title: Health Gold FAQ: Making a Claim
+title: "Health Gold FAQ: Making a Claim"
 product: HEALTH_GOLD
 version: na
 effective_from: 2024-01-01

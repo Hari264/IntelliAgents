@@ -1,6 +1,6 @@
 ---
 doc_id: CIR-01
-title: NIR Circular Summary: Claim Settlement Timelines
+title: "NIR Circular Summary: Claim Settlement Timelines"
 product: HEALTH_GOLD
 version: na
 effective_from: 2024-01-01

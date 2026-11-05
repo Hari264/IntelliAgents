@@ -1,6 +1,6 @@
 ---
 doc_id: FAQ-SILVER-03
-title: Health Silver FAQ: Claims and Room Rent
+title: "Health Silver FAQ: Claims and Room Rent"
 product: HEALTH_SILVER
 version: na
 effective_from: 2025-01-01

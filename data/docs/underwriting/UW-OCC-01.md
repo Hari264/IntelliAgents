@@ -38,7 +38,7 @@ Warehousing operations vary considerably in their risk profile. This section pro
 
 3.3 FMCG warehouses (packaged consumer goods, food products and beverages): these facilities handle high volumes of packaged goods with moderate fire risk. Generally classified as Class 2. Fire-safety questions: Is there a current fire NOC (no-objection certificate)? Are aerosol products stored separately from other goods? What fire-fighting equipment is available on site?
 
-3.4 E-commerce fulfilment centres (general merchandise and household goods): these large facilities handle diverse categories of goods and have variable risk profiles depending on the mix of products. Generally classified as Class 2 for standard general merchandise. Fire-safety questions: Does the centre store any goods classified as flammable or hazardous under applicable Indian law? Is there a documented fire evacuation plan with regular drills? Are aisles and emergency exits kept clear at all times?
+3.4 E-commerce fulfilment centres (general merchandise and household goods): these large facilities handle diverse categories of goods and have variable risk profiles depending on the mix of products. Generally classified as Class 2 for standard general merchandise. Fire-safety questions: Does the centre store any goods classified as flammable or hazardous under applicable Indian law? Is there a documented fire emergency plan with regular fire drills? Are aisles and emergency exits kept clear at all times?
 
 ## Section 4 Unlisted Occupations
 

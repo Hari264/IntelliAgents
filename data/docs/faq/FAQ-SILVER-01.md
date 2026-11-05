@@ -1,6 +1,6 @@
 ---
 doc_id: FAQ-SILVER-01
-title: Health Silver FAQ: Coverage Basics
+title: "Health Silver FAQ: Coverage Basics"
 product: HEALTH_SILVER
 version: na
 effective_from: 2025-01-01
