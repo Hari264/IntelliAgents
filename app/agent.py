@@ -7,6 +7,7 @@ SYSTEM = (ROOT / "app" / "prompts" / "system_v2.md").read_text(encoding="utf-8")
 # approximate Global Standard prices per 1M tokens for gpt-4.1-mini (check your Azure price page)
 PRICE_IN, PRICE_OUT = 0.40, 1.60
 REFUSAL = guard.REFUSAL
+LAST_TOOL_RESULTS = []      # read by eval/run_eval.py
 
 # Rejection codes that are about a waiting period -> the condition to calculate
 CODE_CONDITION = {"CL-101": "initial_waiting", "CL-205": "joint_replacement",
@@ -27,7 +28,7 @@ TOOL_SPECS = [
         "parameters": {"type": "object", "properties": {"code": {"type": "string"}}, "required": ["code"]}}},
     {"type": "function", "function": {
         "name": "compute_waiting_period",
-        "description": "ALWAYS use for waiting-period or eligibility-date questions. Picks the policy version in force on the date of loss and does the date maths.",
+        "description": "Use for eligibility-date questions ONLY when the context gives BOTH date_of_loss and policy_start. Picks the policy version in force on the date of loss and does the date maths. If policy_start is 'not given', do not call this; use search_clauses instead.",
         "parameters": {"type": "object", "properties": {
             "condition": {"type": "string", "enum": ["initial_waiting", "joint_replacement", "cataract", "hernia",
                                                        "bariatric_surgery", "pre_existing_disease", "maternity"]}},
@@ -50,7 +51,10 @@ def _run_tool(name, args, ctx):
         return res
     if name == "compute_waiting_period":
         if not (ctx.get("policy_start") and ctx.get("date_of_loss")):
-            return {"ok": False, "message": "Policy start date and date of loss are required. Ask the user for them."}
+            return {"ok": False,
+                    "message": "Policy start date not given. Do NOT refuse. Use search_clauses to quote the "
+                               "waiting period from the wording, and say the eligible date can be calculated "
+                               "once the policy start date is provided."}
         return tools.compute_waiting_period(args["condition"], ctx["policy_start"], ctx["date_of_loss"])
     return {"error": f"unknown tool {name}"}
 
@@ -60,7 +64,8 @@ def _pack(answer, status, called, evidence, flags, tin, tout, info):
             "evidence_citations": sorted(evidence), "covered_flags": flags,
             "tokens_in": tin, "tokens_out": tout, "cost_usd": round(cost, 5), "guard": info}
 
-def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=5):
+def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=6):
+    LAST_TOOL_RESULTS.clear()
     # 0. Role block: decided by code, before any model call (costs nothing)
     if guard.is_restricted(question, PERSONAS[persona]):
         return _pack(guard.RESTRICTED_MSG, "blocked", [], set(), [], 0, 0, {"repaired": False, "problems": []})
@@ -72,7 +77,7 @@ def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=5):
                 {"role": "user", "content": f"{context_line}\n{question}"}]
     tin = tout = 0
     called, evidence, covered_flags = [], set(), []
-    answer, finished = "", False
+    answer, finished, nudged = "", False, False
 
     for _ in range(max_rounds):
         resp = aoai.chat.completions.create(model=CHAT_MODEL, messages=messages, tools=TOOL_SPECS,
@@ -80,13 +85,26 @@ def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=5):
         tin += resp.usage.prompt_tokens
         tout += resp.usage.completion_tokens
         msg = resp.choices[0].message
+
         if not msg.tool_calls:
-            answer, finished = msg.content or "", True
+            text = msg.content or ""
+            # A refusal is only allowed AFTER a search found nothing. If the model refuses
+            # without having searched, send it back once to search first.
+            if text.strip().startswith("REFUSE") and not covered_flags and not nudged:
+                nudged = True
+                messages.append({"role": "assistant", "content": text})
+                messages.append({"role": "user", "content":
+                    "You have not searched yet. Call search_clauses first. A missing date is never a reason "
+                    "to refuse. Refuse only if the search does not cover the question."})
+                continue
+            answer, finished = text, True
             break
+
         messages.append(msg)
         for tc in msg.tool_calls:
             args = json.loads(tc.function.arguments or "{}")
             result = _run_tool(tc.function.name, args, ctx)
+            LAST_TOOL_RESULTS.append({"tool": tc.function.name, "result": result})
             if tc.function.name == "search_clauses":
                 covered_flags.append(result["covered"])
             called.append({"tool": tc.function.name, "args": args})
@@ -101,7 +119,7 @@ def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=5):
             messages.append({"role": "tool", "tool_call_id": tc.id,
                              "content": json.dumps(result, ensure_ascii=False, default=str)})
 
-    info = {"repaired": False, "problems": []}
+    info = {"repaired": False, "problems": [], "nudged": nudged}
 
     # 1. Refusals decided by code
     if not finished or (covered_flags and not any(covered_flags)) or answer.strip().startswith("REFUSE"):
