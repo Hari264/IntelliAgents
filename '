@@ -1,0 +1,23 @@
+[33mcommit 5c6c9ca6c72d0033482eaea17e9b4e89c78798dd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: VangetiHariVardhanRe <vangeti_harivardhanreddy@epam.com>
+Date:   Thu Nov 5 12:37:38 2026 +0530
+
+    Phase 2 complete: bronze/silver/gold tables and embeddings (16/16 checks)
+
+[33mcommit 72a3db5821f2b073bb60d9ed53b4460db9fb31f4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: VangetiHariVardhanRe <vangeti_harivardhanreddy@epam.com>
+Date:   Thu Nov 5 12:01:14 2026 +0530
+
+    Clean corpus: quoted titles, fraud term and banned word removed
+
+[33mcommit 049f527aa411b401edcba433de9e3e900abd4d62[m
+Author: VangetiHariVardhanRe <vangeti_harivardhanreddy@epam.com>
+Date:   Mon Nov 2 12:22:29 2026 +0530
+
+    Phase 0: repo structure and synthetic corpus
+
+[33mcommit a7763a151542b2c891cd73dda6c2fb699812a51b[m
+Author: VangetiHariVardhanRe <vangeti_harivardhanreddy@epam.com>
+Date:   Mon Nov 2 12:15:33 2026 +0530
+
+    first commit
