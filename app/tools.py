@@ -12,7 +12,10 @@ _STOP = {"the", "and", "for", "with", "under", "ion"}
 _GENERIC = {"cover", "covers", "covered", "coverage", "policy", "policies", "claim", "claims",
             "benefit", "benefits", "eligible", "eligibility", "apply", "applies", "applicable",
             "loss", "date", "fall", "falls", "inside", "rule", "rules", "limit", "information",
-            "details", "customer", "treatment"}
+            "details", "customer", "treatment",
+            # new: words that describe the question, not the subject
+            "rejection", "code", "codes", "mean", "means", "clm", "waiting", "period"}
+
 
 # Words the user may type -> words the documents actually use
 _ALIASES = {
@@ -27,10 +30,12 @@ _ALIASES = {
     "dental":       ["dental", "teeth"],
 }
 
+
 def _words_in(term, text):
-    """True if every significant (non-generic) word of the term appears at a word start in the text."""
+    """True if every significant word of the term appears at a word start in the text.
+    Generic words, short words and pure numbers (claim or code IDs like 002, 305) are ignored."""
     words = [w for w in re.findall(r"[a-z0-9]+", term.lower())
-             if len(w) > 2 and w not in _STOP and w not in _GENERIC]
+             if len(w) > 2 and w not in _STOP and w not in _GENERIC and not w.isdigit()]
     return all(re.search(rf"\b{re.escape(w)}", text) for w in words) if words else True
 
 def _term_in(term, text):

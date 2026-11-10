@@ -18,7 +18,7 @@ rows = [
  ["Q07","normal","service","What is the room rent limit for a Health Gold policy?",G,"","2025-08-01","answer","HG-WORD-2025§8.1","2% of sum insured per day"],
  ["Q08","normal","adjuster","Is maternity covered for claim CLM-006?",G,"2023-01-01","2025-06-01","answer","HG-WORD-2025§2.6","covered after 24 months; eligible from 2025-01-01; up to ₹50000 per delivery"],
  ["Q09","normal","adjuster","Is cosmetic dental treatment such as veneers covered?",G,"","2025-07-01","answer","HG-WORD-2025§5.4","excluded under 5.4.2"],
- ["Q10","normal","adjuster","Is claim CLM-007 for cataract within the waiting period?",G,"2024-02-01","2025-10-01","answer","HG-WORD-2025§4.2|HG-WORD-2025§3.2","24 months; eligible from 2026-02-01; within waiting period; sub-limit ₹40000 per eye"],
+ ["Q10","normal","adjuster","Is claim CLM-007 for cataract within the waiting period, and what is the sub-limit?",G,"2024-02-01","2025-10-01","answer","HG-WORD-2025§4.2|HG-WORD-2025§3.2","24 months; eligible from 2026-02-01; within waiting period; sub-limit ₹40000 per eye"],
  ["Q11","normal","service","What does rejection code CL-305 mean?",G,"","2025-05-05","answer","HG-WORD-2025§8.1|SCR-ROOM-01§2","room rent above 2% of sum insured; proportionate deduction under 8.2"],
  ["Q12","normal","adjuster","Is claim CLM-010 for dengue within the initial waiting period?",G,"2025-04-01","2025-04-20","answer","HG-WORD-2025§4.1","1 month; eligible from 2025-05-01; within waiting period"],
  ["Q13","normal","underwriter","What must a proposer declare about pre-existing diseases?",G,"","","answer","UW-PED-01§2","diagnosis date and treatment on proposal form"],

@@ -24,7 +24,7 @@ TOOL_SPECS = [
             "required": ["query", "key_terms"]}}},
     {"type": "function", "function": {
         "name": "lookup_rejection_code",
-        "description": "Exact lookup of a rejection code such as CL-217.",
+        "description": "Exact lookup of a rejection code such as CL-217. Only for codes starting with CL-. Claim numbers starting with CLM- are not rejection codes.",
         "parameters": {"type": "object", "properties": {"code": {"type": "string"}}, "required": ["code"]}}},
     {"type": "function", "function": {
         "name": "compute_waiting_period",
@@ -77,6 +77,7 @@ def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=6):
                 {"role": "user", "content": f"{context_line}\n{question}"}]
     tin = tout = 0
     called, evidence, covered_flags = [], set(), []
+    exact_ok = False          # True once the waiting-period calculator has produced a valid result
     answer, finished, nudged = "", False, False
 
     for _ in range(max_rounds):
@@ -88,8 +89,7 @@ def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=6):
 
         if not msg.tool_calls:
             text = msg.content or ""
-            # A refusal is only allowed AFTER a search found nothing. If the model refuses
-            # without having searched, send it back once to search first.
+            # A refusal is only allowed AFTER a search found nothing.
             if text.strip().startswith("REFUSE") and not covered_flags and not nudged:
                 nudged = True
                 messages.append({"role": "assistant", "content": text})
@@ -105,6 +105,8 @@ def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=6):
             args = json.loads(tc.function.arguments or "{}")
             result = _run_tool(tc.function.name, args, ctx)
             LAST_TOOL_RESULTS.append({"tool": tc.function.name, "result": result})
+            if tc.function.name == "compute_waiting_period" and result.get("ok"):
+                exact_ok = True
             if tc.function.name == "search_clauses":
                 covered_flags.append(result["covered"])
             called.append({"tool": tc.function.name, "args": args})
@@ -122,26 +124,32 @@ def run(question, persona, date_of_loss=None, policy_start=None, max_rounds=6):
     info = {"repaired": False, "problems": [], "nudged": nudged}
 
     # 1. Refusals decided by code
-    if not finished or (covered_flags and not any(covered_flags)) or answer.strip().startswith("REFUSE"):
+    if not finished or (covered_flags and not any(covered_flags) and not exact_ok) \
+            or answer.strip().startswith("REFUSE"):
         return _pack(REFUSAL, "refused", called, evidence, covered_flags, tin, tout, info)
 
-    # 2. Citation and wording checks, with one repair attempt
+    # 2. Citation and wording checks, with up to TWO repair attempts
     answer = guard.normalise(answer, evidence)
     problems = guard.check(answer, evidence)
-    if problems:
-        info["problems"] = problems
+    attempts = 0
+    while problems and attempts < 2:
+        if not info["problems"]:
+            info["problems"] = problems
         messages.append({"role": "assistant", "content": answer})
         messages.append({"role": "user", "content":
             "Your answer failed these checks:\n- " + "\n- ".join(problems) +
-            "\nRewrite the whole answer and fix them. Use only citations from the tool results, "
-            "exactly as [DOC-ID§clause], one per bracket. Keep the same format."})
+            "\nRewrite the whole answer and fix them. EVERY bullet must END with a citation in square "
+            "brackets, exactly as [DOC-ID§clause], one per bracket, using only citations from the tool "
+            "results. If you cannot cite a bullet, delete that bullet. Keep the same format."})
         resp = aoai.chat.completions.create(model=CHAT_MODEL, messages=messages, tools=TOOL_SPECS,
                                             tool_choice="none", temperature=0)
         tin += resp.usage.prompt_tokens
         tout += resp.usage.completion_tokens
         answer = guard.normalise(resp.choices[0].message.content or "", evidence)
         info["repaired"] = True
-        if guard.check(answer, evidence):
-            return _pack(REFUSAL, "refused", called, evidence, covered_flags, tin, tout, info)
+        attempts += 1
+        problems = guard.check(answer, evidence)
 
+    if problems:
+        return _pack(REFUSAL, "refused", called, evidence, covered_flags, tin, tout, info)
     return _pack(answer, "answered", called, evidence, covered_flags, tin, tout, info)

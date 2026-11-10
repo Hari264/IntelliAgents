@@ -8,7 +8,8 @@ ALLOWED_TYPES = {"wording","sop","circular","uw_guideline","fraud_playbook",
 SENS     = {"General","Internal","Restricted"}
 AUD      = {"adjuster","service","underwriter","fraud"}
 PRODUCTS = {"HEALTH_GOLD","HEALTH_SILVER"}
-BANNED   = ["lithium","li-ion","battery","batteries","overseas","international","abroad","evacuation"]
+BANNED   = ["lithium","li-ion","battery","batteries","overseas","international","abroad","evacuation",
+            "air ambulance","helicopter","telemedicine","organ transplant","mental health","energy storage","electric vehicle"]
 FRAUD_TERMS = ["90 days","90-day","150%","red-flag score","watchlist"]
 REQUIRED = ["doc_id","title","product","version","effective_from","effective_to",
             "doc_type","audience","sensitivity"]
@@ -17,7 +18,7 @@ FRONT = re.compile(r"^\ufeff?---\s*\n(.*?)\n---\s*\n(.*)$", re.S)
 HEAD  = re.compile(r"^## (.+)$", re.M)
 
 files = sorted(glob.glob(f"{DOCS}/**/*.md", recursive=True))
-print(f"Found {len(files)} files in '{DOCS}' (expected 50)")
+print(f"Found {len(files)} files in '{DOCS}' (expected 100)")
 if not files:
     raise SystemExit("No files found - fix the DOCS path at the top of this script.")
 

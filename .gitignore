@@ -1,1 +1,8 @@
 .env
+
+logs/usage.csv
+
+logs/
+
+__pycache__/
+*.pyc

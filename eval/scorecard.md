@@ -14,12 +14,11 @@ Questions run: 20
 | Citation precision (cited IDs really retrieved) | 100% | | 100% ✅ |
 | Answers with decision wording | 0 | | 0 ✅ |
 
-- Average cost per model-answered question: **$0.00264**
-- Average latency: **6.2s**
-- Judge cost (evaluation only): $0.0151
+- Average cost per model-answered question: **$0.00277**
+- Average latency: **5.1s**
+- Judge cost (evaluation only): $0.0168
 
 ## Misses
 
+- Q02: fact missing | citation hit 0.0
 - Q05: citation hit 0.5
-- Q10: fact missing | citation hit 0.5
-- Q11: citation hit 0.5

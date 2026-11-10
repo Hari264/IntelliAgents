@@ -24,13 +24,14 @@ sensitivity: General
 
 2.1 Where this Rider is shown in the Policy Schedule, the Company will pay a lump sum benefit to the Insured Person upon confirmed first diagnosis of a covered critical illness, provided the diagnosis is made in India by a specialist registered medical practitioner with the relevant qualification, and the survival condition in Clause 3.3 is satisfied.
 
-2.2 The covered critical illnesses are those listed in the Policy Schedule for the Insured Person's cover. The list typically includes major conditions such as specified forms of cancer, heart attack meeting defined clinical criteria, stroke with permanent neurological deficit, coronary artery bypass surgery, kidney failure requiring regular dialysis, major organ transplant, and specified other conditions. The precise list and the clinical definitions for each condition are as set out in the Policy Schedule endorsement.
+2.2 The covered critical illnesses are those listed in the Policy Schedule for the Insured Person's cover. The list typically includes major conditions such as specified forms of cancer, heart attack meeting defined clinical criteria, stroke with permanent neurological deficit, coronary artery bypass surgery, kidney failure requiring regular dialysis, major major surgical intervention, and specified other conditions. The precise list and the clinical definitions for each condition are as set out in the Policy Schedule endorsement.
 
 2.3 The lump sum benefit is payable only once per Insured Person per Policy under this Rider, regardless of the number of covered critical illnesses diagnosed or the number of Policy Years in force.
 
 2.4 Payment of the lump sum benefit does not terminate the base Health Gold policy. The Insured Person's in-patient cover under the base policy continues in force for the remainder of the Policy Year, subject to all applicable terms and limits.
 
 ## Clause 3 Conditions
+
 3.1 This Rider is subject to an initial waiting period, as specified in the Policy Schedule, from the date of inception of the Rider (or from the date the Rider is added to an existing policy). No lump sum benefit is payable where the covered critical illness is first diagnosed within this initial waiting period, except where the critical illness results directly from an accidental bodily injury.
 
 3.2 The diagnosis must be confirmed by a specialist registered medical practitioner in the relevant field and supported by appropriate clinical evidence including, where applicable, histopathology reports, imaging, ECG findings, or other diagnostic evidence appropriate to the specific condition.
